@@ -1,44 +1,46 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 class Contact {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private String zip;
-    private String phoneNumber;
-    private String email;
+    public Contact(String john, String doe, String s, String newYork, String ny, String number, String s1, String mail) {
+    }
+    // ... (same as before)
+}
 
-    public Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+class AddressBook {
+    private List<Contact> contacts;
+
+    public AddressBook() {
+        contacts = new ArrayList<>();
     }
 
-    // Getters and setters (omitted for brevity)
+    // ... (same methods as before)
+
+    public void addContact(Contact contact) {
+        contacts.add(contact);
+    }
+
+    public List<Contact> getAllContacts() {
+        return null;
+    }
 }
 
 public class AddressBookExample {
     public static void main(String[] args) {
-        List<Contact> contacts = createContacts();
+        AddressBook addressBook = new AddressBook();
 
-        // Display the created contacts
-        contacts.forEach(System.out::println);
-    }
+        // Adding existing contacts
+        addressBook.addContact(new Contact("John", "Doe", "123 Main St", "New York", "NY", "10001", "555-123-4567", "john@example.com"));
+        addressBook.addContact(new Contact("Jane", "Smith", "456 Elm St", "Los Angeles", "CA", "90001", "555-987-6543", "jane@example.com"));
 
-    public static List<Contact> createContacts() {
-        return List.of(
-                new Contact("Shilpa", "Bhonde", "Ambika Nagar", "Yavatmal", "MH", "10001", "555-123-4567", "shilpa@example.com"),
-                new Contact("Aarti", "Nachan", "Chetak Ghoda", "Aurangabad", "MH", "90001", "555-987-6543", "aarti@example.com"),
-                new Contact("Vaishnavi", "Waghmode", "Sainagar", "Amravati", "MH", "60601", "555-789-1234", "vaishu@example.com")
-        );
+        // Adding a new contact
+        Contact newContact = new Contact("Alice", "Johnson", "789 Oak St", "Chicago", "IL", "60601", "555-789-1234", "alice@example.com");
+        addressBook.addContact(newContact);
+
+        // Display all contacts
+        List<Contact> allContacts = addressBook.getAllContacts();
+        allContacts.forEach(System.out::println);
     }
 }
